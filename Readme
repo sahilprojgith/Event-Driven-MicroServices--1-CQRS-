@@ -1,1 +1,26 @@
 These are the steps I followed...
+
+I built this repo while learning CQRS, inspired by Daily Code Buffer.
+
+How it works in this project:
+A client sends a Command (e.g., CreateProductCommand).
+The Aggregate (@Aggregate) validates the command and applies an Event.
+The Event (e.g., ProductCreatedEvent) is persisted in the Event Store.
+An Event Handler / Projection listens for the event and updates the Read Model.
+A client issues a Query, which is served directly from the read model.
+
+# Clone the repo
+git clone repo
+cd this-repo
+
+# Start the app
+mvn clean spring-boot:run
+
+Send a POST request to create a product (command).
+Observe the event being published and stored.
+Send a GET request to fetch products (query).
+
+🙌 Acknowledgements
+Thanks to Daily Code Buffer
+ for their amazing CQRS tutorials.
+Built with Spring Boot + Axon Framework.
